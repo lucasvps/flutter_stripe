@@ -1584,7 +1584,7 @@ mixin _$TokenData {
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  String get createdDateTime => throw _privateConstructorUsedError;
+  dynamic get createdDateTime => throw _privateConstructorUsedError;
 
   /// Type of the token
   TokenType get type => throw _privateConstructorUsedError;
@@ -1611,7 +1611,7 @@ abstract class $TokenDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'created') String createdDateTime,
+      @JsonKey(name: 'created') dynamic createdDateTime,
       TokenType type,
       bool livemode,
       BankAccount? bankAccount,
@@ -1635,7 +1635,7 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
   @override
   $Res call({
     Object? id = null,
-    Object? createdDateTime = null,
+    Object? createdDateTime = freezed,
     Object? type = null,
     Object? livemode = null,
     Object? bankAccount = freezed,
@@ -1646,10 +1646,10 @@ class _$TokenDataCopyWithImpl<$Res, $Val extends TokenData>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      createdDateTime: null == createdDateTime
+      createdDateTime: freezed == createdDateTime
           ? _value.createdDateTime
           : createdDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1703,7 +1703,7 @@ abstract class _$$_TokenDataCopyWith<$Res> implements $TokenDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'created') String createdDateTime,
+      @JsonKey(name: 'created') dynamic createdDateTime,
       TokenType type,
       bool livemode,
       BankAccount? bankAccount,
@@ -1727,7 +1727,7 @@ class __$$_TokenDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? createdDateTime = null,
+    Object? createdDateTime = freezed,
     Object? type = null,
     Object? livemode = null,
     Object? bankAccount = freezed,
@@ -1738,10 +1738,10 @@ class __$$_TokenDataCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      createdDateTime: null == createdDateTime
+      createdDateTime: freezed == createdDateTime
           ? _value.createdDateTime
           : createdDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1783,7 +1783,7 @@ class _$_TokenData implements _TokenData {
   /// Timestamp when token was created
   @override
   @JsonKey(name: 'created')
-  final String createdDateTime;
+  final dynamic createdDateTime;
 
   /// Type of the token
   @override
@@ -1812,8 +1812,8 @@ class _$_TokenData implements _TokenData {
         (other.runtimeType == runtimeType &&
             other is _$_TokenData &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.createdDateTime, createdDateTime) ||
-                other.createdDateTime == createdDateTime) &&
+            const DeepCollectionEquality()
+                .equals(other.createdDateTime, createdDateTime) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.livemode, livemode) ||
                 other.livemode == livemode) &&
@@ -1825,7 +1825,13 @@ class _$_TokenData implements _TokenData {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, createdDateTime, type, livemode, bankAccount, card);
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(createdDateTime),
+      type,
+      livemode,
+      bankAccount,
+      card);
 
   @JsonKey(ignore: true)
   @override
@@ -1844,7 +1850,7 @@ class _$_TokenData implements _TokenData {
 abstract class _TokenData implements TokenData {
   const factory _TokenData(
       {required final String id,
-      @JsonKey(name: 'created') required final String createdDateTime,
+      @JsonKey(name: 'created') required final dynamic createdDateTime,
       required final TokenType type,
       required final bool livemode,
       final BankAccount? bankAccount,
@@ -1861,7 +1867,7 @@ abstract class _TokenData implements TokenData {
 
   /// Timestamp when token was created
   @JsonKey(name: 'created')
-  String get createdDateTime;
+  dynamic get createdDateTime;
   @override
 
   /// Type of the token
